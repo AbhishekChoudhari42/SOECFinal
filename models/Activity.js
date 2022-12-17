@@ -26,9 +26,11 @@ const ActivitySchema = new mongoose.Schema(
       registrations: {
         type: Array,
         default: []
+      },
+      attendance: {
+        type: Array,
+        default: []
       }
-    
-    
     },{ timestamps: true }
 )
 
