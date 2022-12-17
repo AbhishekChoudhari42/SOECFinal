@@ -12,8 +12,6 @@ const app = express()
 
 
 // connection
-
-
 async function connect(){
     try{
         await mongoose.connect(process.env.MONGO_URL,{ useNewUrlParser: true})
@@ -26,13 +24,13 @@ async function connect(){
 }
 
 connect()
-mongoose.set('strictQuery', true);
+mongoose.set("strictQuery", true);
 // const port = process.env.PORT || 8080
 const port = 5000
 app.listen(port, () => console.log("💥"))
-// app.get("/",(req,res)=>{
-//     res.send("sfsfs")
-// })
+app.get("/",(req,res)=>{
+    res.send("sfsfs")
+})
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("dev"));
@@ -41,6 +39,8 @@ app.use(morgan("dev"));
 
 const adminRouter = require("./admin")
 app.use("/admin/activity",adminRouter)
+const studentRouter = require("./stud")
+app.use("/student/activity",studentRouter)
 
 // app.use()
 
