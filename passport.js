@@ -13,9 +13,6 @@ function(accessToken,refreshToken,profile,callback){
     callback(null,profile)
 }
 
-
-
-
 ))
 
 passport.serializeUser((user,done)=>{

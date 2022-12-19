@@ -11,8 +11,8 @@ router.get("/all",async(req,res)=>{
         res.status(500).json(err);
     }
 })
-
-router.put("/Register/:name",async(req,res)=>{
+// activity registration
+router.put("/register/:name",async(req,res)=>{
     const activityName = req.params.name;
     const studentId = req.body.id; 
     const ActivityId = req.body.activityId;
@@ -23,7 +23,6 @@ router.put("/Register/:name",async(req,res)=>{
             studentRegistrations: activityName
         }
         })
-        
         const activity = await Activity.findById(ActivityId);
         await activity.updateOne({ $push: { registrations: studentId } });
         
@@ -32,6 +31,13 @@ router.put("/Register/:name",async(req,res)=>{
         res.status(500).json(err);
     }
 })
+
+// student Registration
+
+
+
+
+
 
 
 
