@@ -34,7 +34,18 @@ router.put("/register/:name",async(req,res)=>{
 
 // student Registration
 
+router.put("/registration/:id", async (req, res) => {
+    const newStudent = req.body.student;  
+    try {
 
+    const activity = await Activity.findById(req.params.id);
+      await activity.updateOne({$push : { registrations:newStudent}})
+      const activityResponse = await Activity.findById(req.params.id);
+      res.status(200).json(activityResponse);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 
 

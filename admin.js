@@ -64,8 +64,8 @@ router.put("/attendance/:id", async (req, res) => {
 
     const activity = await Activity.findById(req.params.id);
       await activity.updateOne({$push : { registrations:newStudent}})
-
-      res.status(200).json(activity);
+      const activityResponse = await Activity.findById(req.params.id);
+      res.status(200).json(activityResponse);
     } catch (err) {
       res.status(500).json(err);
     }
